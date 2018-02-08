@@ -1,4 +1,3 @@
-console.log('this is working');
 
 var player1 = true,
     player2 = false,
@@ -13,6 +12,13 @@ var player1 = true,
 
 var rollDie = function() {
   return Math.floor(Math.random() * 6 + 1);
+};
+
+var showDice = function() {
+  for (var i = 0; i < diceInPlay.length; i++) {
+    var id = '#die' + (i + 1);
+    $(id).text(diceInPlay[i].toString())
+  }
 };
 
 var firstRoll = function() {
@@ -30,4 +36,16 @@ var firstRoll = function() {
 
 $('#rollbutton').on('click', function() {
   firstRoll();
+  showDice();
+  diceInPlay = [];
+});
+
+$('.dice').on('click', function() {
+  if (this.classList.contains('dice')) {
+    this.classList.add('diceselect')
+    this.classList.remove('dice');
+  } else {
+    this.classList.add('dice');
+    this.classList.remove('diceselect');
+  }
 });

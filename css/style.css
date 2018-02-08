@@ -25,9 +25,17 @@ h1 {
   color: blue;
 }
 
-.dice {
+.dice, .diceselect {
   display: inline-block;
   width: 30px;
   height: 30px;
+}
+
+.dice {
   background-color: white;
+}
+
+.diceselect {
+  background-color: red;
+  color: white;
 }
