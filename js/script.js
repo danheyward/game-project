@@ -4,7 +4,7 @@ var player1 = true,
     button = $('#rollbutton'),
     dice = $('.dice'),
     diceInPlay = [],
-    dieInHand = [],
+    diceInHand = [],
     die1 = 0,
     die2 = 0,
     die3 = 0,
@@ -15,10 +15,17 @@ var rollDie = function() {
   return Math.floor(Math.random() * 6 + 1);
 };
 
-var showDice = function() {
+var showRoll = function() {
   for (var i = 0; i < diceInPlay.length; i++) {
     var id = '#die' + (i + 1);
     $(id).text(diceInPlay[i].toString())
+  }
+};
+
+var showHand = function() {
+  for (var i = 0; i < diceInHand.length; i++) {
+    var id = '#held' + (i + 1);
+    $(id).text(diceInHand[i].toString())
   }
 };
 
@@ -47,18 +54,20 @@ var resetDice = function() {
 
 button.on('click', function() {
   firstRoll();
-  showDice();
+  showRoll();
   resetDice();
+  showHand();
   diceInPlay = [];
 });
 
 dice.on('click', function() {
   if (this.classList.contains('dice') && $(this).text() !== '') {
     this.classList.add('diceselect')
-    this.classList.remove('dice');
-    console.log($(this).text());
+    this.classList.remove('dice')
+    diceInHand.push($(this).text())
   } else {
     this.classList.add('dice');
-    this.classList.remove('diceselect');
+    this.classList.remove('diceselect')
+    diceInHand.splice(diceInHand.indexOf($(this).text()), 1);
   }
 });
