@@ -5,11 +5,9 @@ var player1 = true,
     dice = $('.dice'),
     diceInPlay = [],
     diceInHand = [],
-    die1 = 0,
-    die2 = 0,
-    die3 = 0,
-    die4 = 0,
-    die5 = 0;
+    rollNum = 0,
+    die = 0,
+    fullHand = 5;
 
 var rollDie = function() {
   return Math.floor(Math.random() * 6 + 1);
@@ -18,28 +16,29 @@ var rollDie = function() {
 var showRoll = function() {
   for (var i = 0; i < diceInPlay.length; i++) {
     var id = '#die' + (i + 1);
-    $(id).text(diceInPlay[i].toString())
+    $(id).html(diceInPlay[i]);
   }
 };
 
-var showHand = function() {
+var saveDice = function() {
   for (var i = 0; i < diceInHand.length; i++) {
     var id = '#held' + (i + 1);
-    $(id).text(diceInHand[i].toString())
+    $(id).html(diceInHand[i]);
   }
 };
 
-var firstRoll = function() {
-  die1 = rollDie();
-  diceInPlay.push(die1);
-  die2 = rollDie();
-  diceInPlay.push(die2);
-  die3 = rollDie();
-  diceInPlay.push(die3);
-  die4 = rollDie();
-  diceInPlay.push(die4);
-  die5 = rollDie();
-  diceInPlay.push(die5);
+var clearTable = function() {
+  for (var i = 0; i < fullHand; i++) {
+    var id = '#die' + (i + 1);
+    $(id).html('');
+  };
+};
+
+var rollDice = function() {
+  for (var i = 5; i > diceInHand.length; i--) {
+    die = rollDie();
+    diceInPlay.push(die);
+  }
 };
 
 
@@ -53,21 +52,25 @@ var resetDice = function() {
 };
 
 button.on('click', function() {
-  firstRoll();
-  showRoll();
-  resetDice();
-  showHand();
-  diceInPlay = [];
+  if (rollNum < 3) {
+    clearTable();
+    diceInPlay = [];
+    rollDice();
+    showRoll();
+    resetDice();
+    saveDice();
+    rollNum++
+  }
 });
 
 dice.on('click', function() {
-  if (this.classList.contains('dice') && $(this).text() !== '') {
+  if (this.classList.contains('dice') && $(this).html() !== '') {
     this.classList.add('diceselect')
     this.classList.remove('dice')
-    diceInHand.push($(this).text())
+    diceInHand.push($(this).html())
   } else {
     this.classList.add('dice');
     this.classList.remove('diceselect')
-    diceInHand.splice(diceInHand.indexOf($(this).text()), 1);
+    diceInHand.splice(diceInHand.indexOf($(this).html()), 1);
   }
 });
