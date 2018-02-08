@@ -1,0 +1,33 @@
+html,body {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.gameboard {
+  height: 600px;
+}
+
+.gameleft, .scoreright {
+  margin: 1vw;
+  padding: 1vw;
+  background-color: lightgray;
+  height: 600px;
+  width: 400px;
+  display: inline-block;
+}
+
+.gameleft {
+  vertical-align: top;
+}
+
+h1 {
+  color: blue;
+}
+
+.dice {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+}

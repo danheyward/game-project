@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>Daniel's New Game</title>
+    <link rel='stylesheet type='text/css' href='css/style.css'>
+  </head>
+  <body>
+
+    <header>
+      <h1>Yahtzee</h1>
+        <div class='links'>
+          <a href='#'>Instructions</a>
+          <a href='#'>High Scores</a>
+          <a href='#'>Go Outside</a>
+        </div>
+    </header>
+
+    <main class='gameboard'>
+
+      <div class='gameleft'>
+
+        <div id='rolleddiv' class='ingame'>
+          <div id='die1' class='dice'></div>
+          <div id='die2' class='dice'></div>
+          <div id='die3' class='dice'></div>
+          <div id='die4' class='dice'></div>
+          <div id='die5' class='dice'></div>
+        </div>
+        <div id='inplaydiv' class='ingame'></div>
+        <div id='buttondiv' class='ingame'>
+          <button id='rollbutton' type='button' value='roll'>ROLL!</button>
+        </div>
+      </div>
+
+      <div class='scoreright'>
+
+        <table class='uppertable'>
+          <thead>
+            <th>Upper Section</th>
+            <th>How To Score</th>
+            <th>P1 Score</th>
+            <th>P2 Score</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ones</td>
+              <td>Add up all Ones</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Twos</td>
+              <td>Add up all Twos</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Threes</td>
+              <td>Add up all Threes</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Ones</td>
+              <td>Add up all Ones</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Fours</td>
+              <td>Add up all Fours</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Fives</td>
+              <td>Add up all Fives</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Sixes</td>
+              <td>Add up all Sixes</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Total Score</td>
+              <td></td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Bonus</td>
+              <td>Score 35</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Total Upper Score</td>
+              <td></td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+        </table>
+        <br /><br />
+        <table class='lowertable'>
+          <thead>
+            <th>Lower Section</th>
+            <th>How To Score</th>
+            <th>P1 Score</th>
+            <th>P2 Score</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Three of a Kind</td>
+              <td>Add up all Ones</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Four of a Kind</td>
+              <td>Add up all Twos</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Full House</td>
+              <td>Add up all Threes</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Small Straight</td>
+              <td>Add up all Ones</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Large Straight</td>
+              <td>Add up all Fours</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Yahtzee</td>
+              <td>Add up all Fives</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Chance</td>
+              <td>Add up all Sixes</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Yahtzee Bonus</td>
+              <td></td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Lower Section Total</td>
+              <td>Score 35</td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Total Score</td>
+              <td></td>
+              <td>0</td>
+              <td>0</td>
+            </tr>
+      </div>
+
+    </main>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script type='text/javascript' src='js/script.js'></script>
+  </body>
+</html>
