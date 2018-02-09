@@ -33,10 +33,10 @@ var showRoll = function() {
   for (var i = 0; i < diceInPlay.length; i++) {
     var j = i + 1;
     var id = '#die' + j;
-    dice = $('.dice');
-    dice[i].classList.add('rolled');
-    dice[i].setAttribute('data-value', diceInPlay[i]);
-    dice[i].style.backgroundImage = "url('css/img/" + diceInPlay[i] + diceInPlay[i] + ".png')";
+    unselected = $('.unselected');
+    unselected[i].classList.add('rolled');
+    unselected[i].setAttribute('data-value', diceInPlay[i]);
+    unselected[i].style.backgroundImage = "url('css/img/" + diceInPlay[i] + diceInPlay[i] + ".png')";
   }
 };
 
