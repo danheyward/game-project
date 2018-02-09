@@ -7,9 +7,11 @@ var player1 = true,
 var dice = $('.dice'),
     diceInPlay = [],
     diceInHand = [],
+    allDice = [],
     rollNum = 0,
     die = 0,
-    button = $('#rollbutton');
+    diceSum = 0,
+    diceButton = $('#rollbutton');
 // Global Constants
 var fullHand = 5;
 
@@ -55,14 +57,30 @@ var clearTable = function() {
   };
 };
 
+var potentialScore = function() {
+  if (diceInPlay.length !== 0 && diceInHand.length === 0) {
+    diceSum = diceInPlay.reduce(function(total, amount) {
+      return total + amount
+    });
+    $('.player1').html(diceSum);
+  } else if (diceInPlay.length !== 0 || diceInHand.length !== 0) {
+      allDice = diceInHand.concat(diceInPlay);
+      diceSum = allDice.reduce(function(total, amount) {
+        return total + amount
+      });
+      $('.player1').html(diceSum);
+    }
+  };
 
-// Click Events
-button.on('click', function() {
+
+// Game Turn Function
+diceButton.on('click', function() {
   if (rollNum < 3) {
     clearTable();
     diceInPlay = [];
     rollDice();
     showRoll();
+    potentialScore();
     resetDice();
     saveDice();
     rollNum++
@@ -71,12 +89,14 @@ button.on('click', function() {
 
 dice.on('click', function() {
   if (this.classList.contains('dice') && $(this).html() !== '') {
-    this.classList.add('diceselect')
-    this.classList.remove('dice')
-    diceInHand.push($(this).html())
+    this.classList.add('diceselect');
+    this.classList.remove('dice');
+    var int = $(this).html();
+    diceInHand.push(parseInt(int, 10));
   } else {
     this.classList.add('dice');
     this.classList.remove('diceselect')
-    diceInHand.splice(diceInHand.indexOf($(this).html()), 1);
+    var int = $(this).html();
+    diceInHand.splice(diceInHand.indexOf(parseInt(int, 10)), 1);
   }
 });
