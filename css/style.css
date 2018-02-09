@@ -35,14 +35,14 @@ h1 {
   color: #F26419;
 }
 
-.dice, .diceselect, .diceinhand {
+.dice, .selected, .diceinhand {
   display: inline-block;
   width: 50px;
   height: 50px;
   margin: 10px 0;
 }
 
-.rolled, .diceselect {
+.rolled, .selected {
   background-size: 100%;
   background-repeat: no-repeat;
 }
