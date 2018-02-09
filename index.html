@@ -14,8 +14,6 @@
       <h1>Yahtzee</h1>
         <div class='links'>
           <a href='#'>Instructions</a>
-          <a href='#'>High Scores</a>
-          <a href='#'>Go Outside</a>
         </div>
     </header>
 
@@ -30,152 +28,174 @@
           <div id='die4' class='dice'></div>
           <div id='die5' class='dice'></div>
         </div>
-        <div id='inplaydiv' class='ingame'>
-          <div id='held1' class='diceinhand'></div>
-          <div id='held2' class='diceinhand'></div>
-          <div id='held3' class='diceinhand'></div>
-          <div id='held4' class='diceinhand'></div>
-          <div id='held5' class='diceinhand'></div>
-        </div>
+
         <div id='buttondiv' class='ingame'>
           <button id='rollbutton' type='button' value='roll'>ROLL!</button>
         </div>
-      </div>
 
-      <div class='scoreright'>
-
-        <table class='uppertable highlight'>
-          <thead>
-            <th>Upper Section</th>
-            <th>How To Score</th>
-            <th>P1 Score</th>
-            <th>P2 Score</th>
-          </thead>
+        <table class='p1board uppertable highlight'>
           <tbody>
             <tr>
               <td>Ones</td>
-              <td>Add up all Ones</td>
               <td class='ones player1 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Twos</td>
+              <td class='twos player1 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Threes</td>
+              <td class='threes player1 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Fours</td>
+              <td class='fours player1 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Fives</td>
+              <td class='fives player1 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Sixes</td>
+              <td class='sixes player1 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Total Section Score</td>
+              <td id='upperscorep1' class='player1'></td>
+            </tr>
+            <tr>
+              <td>Bonus</td>
+              <td id='bonusp1' class='player1'></td>
+            </tr>
+        </table>
+
+        <table class='p2board uppertable highlight'>
+          <tbody>
+            <tr>
+              <td>Ones</td>
               <td class='ones player2 unplayed'></td>
             </tr>
             <tr>
               <td>Twos</td>
-              <td>Add up all Twos</td>
-              <td class='twos player1 unplayed'></td>
               <td class='twos player2 unplayed'></td>
             </tr>
             <tr>
               <td>Threes</td>
-              <td>Add up all Threes</td>
-              <td class='threes player1 unplayed'></td>
               <td class='threes player2 unplayed'></td>
             </tr>
             <tr>
               <td>Fours</td>
-              <td>Add up all Fours</td>
-              <td class='fours player1 unplayed'></td>
               <td class='fours player2 unplayed'></td>
             </tr>
             <tr>
               <td>Fives</td>
-              <td>Add up all Fives</td>
-              <td class='fives player1 unplayed'></td>
               <td class='fives player2 unplayed'></td>
             </tr>
             <tr>
               <td>Sixes</td>
-              <td>Add up all Sixes</td>
-              <td class='sixes player1 unplayed'></td>
               <td class='sixes player2 unplayed'></td>
             </tr>
             <tr>
-              <td>Total Score</td>
-              <td></td>
-              <td id='upperscorep1' class='player1'></td>
+              <td>Total Section Score</td>
               <td id='upperscorep2' class='player2'></td>
             </tr>
             <tr>
               <td>Bonus</td>
-              <td>Score 35</td>
-              <td id='bonusp1' class='player1'></td>
               <td id='bonusp2' class='player1'></td>
             </tr>
-            <tr>
-              <td>Total Upper Score</td>
-              <td></td>
-              <td id='totalupperp1' class='player1'></td>
-              <td id='totalupperp2' class='player2'></td>
-            </tr>
         </table>
-        <br /><br />
-        <!-- <table class='lowertable highlight'>
-          <thead>
-            <th>Lower Section</th>
-            <th>How To Score</th>
-            <th>P1 Score</th>
-            <th>P2 Score</th>
-          </thead>
+      </div>
+
+      <div class='scoreright'>
+        <table class='p1board lowertable highlight'>
           <tbody>
             <tr>
               <td>Three of a Kind</td>
-              <td>Add up all Ones</td>
-              <td><button></button></td>
-              <td><button></button></td>
+              <td class='threekind player1 unplayed'></td>
             </tr>
             <tr>
               <td>Four of a Kind</td>
-              <td>Add up all Twos</td>
-              <td><button></button></td>
-              <td><button></button></td>
+              <td class='fourkind player1 unplayed'></td>
             </tr>
             <tr>
               <td>Full House</td>
-              <td>Add up all Threes</td>
-              <td><button></button></td>
-              <td><button></button></td>
+              <td class='fullhouse player1 unplayed'></td>
             </tr>
             <tr>
               <td>Small Straight</td>
-              <td>Add up all Ones</td>
-              <td><button></button></td>
-              <td><button></button></td>
+              <td class='sstraight player1 unplayed'></td>
             </tr>
             <tr>
               <td>Large Straight</td>
-              <td>Add up all Fours</td>
-              <td><button></button></td>
-              <td><button></button></td>
+              <td class='lstraight player1 unplayed'></td>
             </tr>
             <tr>
               <td>Yahtzee</td>
-              <td>Add up all Fives</td>
-              <td><button></button></td>
-              <td><button></button></td>
+              <td class='yahtzee player1 unplayed'></td>
             </tr>
             <tr>
               <td>Chance</td>
-              <td>Add up all Sixes</td>
-              <td><button></button></td>
-              <td><button></button></td>
+              <td class='chance player1 unplayed'></td>
             </tr>
             <tr>
               <td>Yahtzee Bonus</td>
-              <td></td>
-              <td><button></button></td>
-              <td><button></button></td>
+              <td class='yahtzeebonus player1'></td>
             </tr>
             <tr>
               <td>Lower Section Total</td>
-              <td></td>
-              <td><button></button></td>
-              <td><button></button></td>
+              <td id='lowerscorep1' class='player1'></td>
             </tr>
             <tr>
               <td>Total Score</td>
-              <td></td>
-              <td><button></button></td>
-              <td><button></button></td>
-            </tr> -->
+              <td id='totalp1' class='player1'></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class='p2board lowertable highlight'>
+          <tbody>
+            <tr>
+              <td>Three of a Kind</td>
+              <td class='threekind player2 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Four of a Kind</td>
+              <td class='fourkind player2 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Full House</td>
+              <td class='fullhouse player2 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Small Straight</td>
+              <td class='sstraight player2 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Large Straight</td>
+              <td class='lstraight player2 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Yahtzee</td>
+              <td class='yahtzee player2 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Chance</td>
+              <td class='chance player2 unplayed'></td>
+            </tr>
+            <tr>
+              <td>Yahtzee Bonus</td>
+              <td class='yahtzeebonus player2'></td>
+            </tr>
+            <tr>
+              <td>Lower Section Total</td>
+              <td id='lowerscorep2' class='player2'></td>
+            </tr>
+            <tr>
+              <td>Total Score</td>
+              <td id='totalp2' class='player2'></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
     </main>

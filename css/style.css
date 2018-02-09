@@ -11,6 +11,10 @@ html,body {
   height: 600px;
 }
 
+.links {
+  margin-bottom: 10px;
+}
+
 .gameleft, .scoreright {
   margin: 1vw;
   padding: 1vw;
@@ -33,21 +37,26 @@ h1 {
 
 .dice, .diceselect, .diceinhand {
   display: inline-block;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   margin: 10px 0;
 }
 
-/* .dice, .diceinhand {
-  background-color: white;
-} */
-
-.diceselect {
-  background-color: red;
-  color: white;
-}
-
-.filled {
+.rolled, .diceselect {
   background-size: 100%;
   background-repeat: no-repeat;
+}
+
+td {
+  width: 3vw;
+}
+
+.unplayed {
+  color: lightgray;
+  font-weight: 150;
+  cursor: pointer;
+}
+
+.p2board {
+  display: none;
 }

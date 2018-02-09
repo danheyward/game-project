@@ -12,7 +12,7 @@ var dice = $('.dice'),
     die = 0,
     diceSum = 0,
     diceButton = $('#rollbutton');
-// Global Constants
+// Global Constants + Colors
 var fullHand = 5;
 
 //Dice Functions
@@ -31,7 +31,8 @@ var showRoll = function() {
   for (var i = 0; i < diceInPlay.length; i++) {
     var j = i + 1;
     var id = '#die' + j;
-    dice[i].classList.add('filled')
+    dice[i].classList.add('rolled');
+    dice[i].setAttribute('data-value', diceInPlay[i]);
     dice[i].style.backgroundImage = "url('css/img/" + diceInPlay[i] + ".png')";
   }
 };
@@ -59,6 +60,18 @@ var clearTable = function() {
   };
 };
 
+// Score the left side of the board
+var leftScores = function(array, dieNum) {
+  var count = 0;
+  for (var i = 0; i < array.length; i++) {
+    if (array[i] === dieNum) {
+      count++
+    }
+  }
+  return count * dieNum;
+};
+
+// Show all potential scoring options
 var potentialScore = function() {
   if (diceInPlay.length !== 0 && diceInHand.length === 0) {
     diceSum = diceInPlay.reduce(function(total, amount) {
@@ -90,11 +103,13 @@ diceButton.on('click', function() {
 });
 
 dice.on('click', function() {
-  if (this.classList.contains('dice') && $(this).html() !== '') {
+  if (this.classList.contains('dice') && diceInPlay.length !== 0) {
     this.classList.add('diceselect');
     this.classList.remove('dice');
-    var int = $(this).html();
-    diceInHand.push(parseInt(int, 10));
+    var value = this.getAttribute('data-value');
+    this.style.backgroundImage = "url('css/img/" + value + value + ".png')";
+    // var int = $(this).html();
+    // diceInHand.push(parseInt(int, 10));
   } else {
     this.classList.add('dice');
     this.classList.remove('diceselect')
