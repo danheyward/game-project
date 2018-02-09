@@ -53,18 +53,46 @@ var leftScores = function(array, dieNum) {
 
 // Show all potential scoring options
 var potentialScore = function() {
-  if (diceInPlay.length !== 0 && diceInHand.length === 0) {
-    diceSum = diceInPlay.reduce(function(total, amount) {
-      return total + amount
-    });
-    $('.unplayed').html(diceSum);
-  } else if (diceInPlay.length !== 0 || diceInHand.length !== 0) {
-      allDice = diceInHand.concat(diceInPlay);
-      diceSum = allDice.reduce(function(total, amount) {
-        return total + amount
-      });
-      $('.unplayed').html(diceSum);
-    }
+  allDice = diceInHand.concat(diceInPlay);
+//   var openings = $('td').filter('.unplayed');
+//   var openingsp1 = openings.filter('.player1');
+//   console.log(openingsp1);
+//     for each(i in openingsp1) {
+//       if (openingsp1.includes('ones')) {
+//         total = leftScores(allDice, 1);
+//         $('ones').html(total);
+//     } else if (openingsp1.includes('twos')) {
+//         total = leftScores(allDice, 2);
+//         $('twos').html(total);
+//     } else if (openingsp1[i].includes('threes')) {
+//         total = leftScores(allDice, 3);
+//         $('threes').html(total);
+//     } else if (openingsp1[i].includes('fours')) {
+//         total = leftScores(allDice, 4);
+//         $('fours').html(total);
+//     } else if (openingsp1[i].includes('fives')) {
+//         total = leftScores(allDice, 5);
+//         $('fives').html(total);
+//     } else if (openingsp1[i].includes('sixes')) {
+//         total = leftScores(allDice, 6);
+//         $('sixes').html(total);
+//     }
+//   };
+// };
+    $('.ones').html(leftScores(allDice, 1));
+    $('.twos').html(leftScores(allDice, 2));
+    $('.threes').html(leftScores(allDice, 3));
+    $('.fours').html(leftScores(allDice, 4));
+    $('.fives').html(leftScores(allDice, 5));
+    $('.sixes').html(leftScores(allDice, 6));
+
+  // } else if (diceInPlay.length !== 0 || diceInHand.length !== 0) {
+  //     allDice = diceInHand.concat(diceInPlay);
+  //     diceSum = allDice.reduce(function(total, amount) {
+  //       return total + amount
+  //     });
+  //     $('.unplayed').html(diceSum);
+  //   }
   };
 
 
@@ -80,7 +108,7 @@ diceButton.on('click', function() {
 });
 
 dice.on('click', function() {
-  if ($(this).hasClass('unselected')) {
+  if ($(this).hasClass('unselected') && rollNum < 3) {
     $(this).addClass('selected');
     $(this).removeClass('unselected');
     var value = $(this).attr('data-value');
@@ -88,9 +116,7 @@ dice.on('click', function() {
     var index = parseInt(value, 10);
     diceInHand.push(index);
     diceInPlay.splice(diceInPlay.indexOf(index), 1);
-    console.log(diceInPlay);
-    console.log(diceInHand);
-  } else if ($(this).hasClass('selected')) {
+  } else if ($(this).hasClass('selected') && rollNum < 3) {
     $(this).addClass('unselected');
     $(this).removeClass('selected');
     var value = $(this).attr('data-value');
@@ -98,7 +124,5 @@ dice.on('click', function() {
     var index = parseInt(value, 10);
     diceInPlay.push(index);
     diceInHand.splice(diceInHand.indexOf(index), 1);
-    console.log(diceInPlay);
-    console.log(diceInHand);
   }
 });
