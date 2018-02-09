@@ -1,16 +1,28 @@
-
+// Player Variables
 var player1 = true,
     player2 = false,
-    button = $('#rollbutton'),
-    dice = $('.dice'),
+    player1Score = 0,
+    player2Score = 0;
+// Dice-specific Variables
+var dice = $('.dice'),
     diceInPlay = [],
     diceInHand = [],
     rollNum = 0,
     die = 0,
-    fullHand = 5;
+    button = $('#rollbutton');
+// Global Constants
+var fullHand = 5;
 
+//Dice Functions
 var rollDie = function() {
   return Math.floor(Math.random() * 6 + 1);
+};
+
+var rollDice = function() {
+  for (var i = 5; i > diceInHand.length; i--) {
+    die = rollDie();
+    diceInPlay.push(die);
+  }
 };
 
 var showRoll = function() {
@@ -27,21 +39,6 @@ var saveDice = function() {
   }
 };
 
-var clearTable = function() {
-  for (var i = 0; i < fullHand; i++) {
-    var id = '#die' + (i + 1);
-    $(id).html('');
-  };
-};
-
-var rollDice = function() {
-  for (var i = 5; i > diceInHand.length; i--) {
-    die = rollDie();
-    diceInPlay.push(die);
-  }
-};
-
-
 var resetDice = function() {
   for (var i = 0; i < dice.length; i++) {
     if (dice[i].className === 'diceselect') {
@@ -51,6 +48,15 @@ var resetDice = function() {
   };
 };
 
+var clearTable = function() {
+  for (var i = 0; i < fullHand; i++) {
+    var id = '#die' + (i + 1);
+    $(id).html('');
+  };
+};
+
+
+// Click Events
 button.on('click', function() {
   if (rollNum < 3) {
     clearTable();
