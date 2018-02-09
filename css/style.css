@@ -21,6 +21,7 @@ html,body {
 
 .gameleft {
   vertical-align: top;
+  position: relative;
 }
 
 h1 {
@@ -37,6 +38,31 @@ h1 {
 .dice, .diceinhand {
   background-color: white;
 }
+
+/* .dice {
+  position: absolute;
+  top: 20px;
+} */
+
+/* #die1 {
+  left: 85px
+}
+
+#die2 {
+  left: 135px
+}
+
+#die3 {
+  left: 185px;
+}
+
+#die4 {
+  left: 235px;
+}
+
+#die5 {
+  left: 285px;
+} */
 
 .diceselect {
   background-color: red;
