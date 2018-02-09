@@ -5,6 +5,7 @@ var player1 = true,
     player2Score = 0;
 // Dice-specific Variables
 var dice = $('.dice'),
+    unselected = $('.unselected'),
     selected = $('.selected'),
     diceInPlay = [],
     diceInHand = [],
@@ -79,17 +80,25 @@ diceButton.on('click', function() {
 });
 
 dice.on('click', function() {
-  if (diceInPlay.length !== 0) {
-    this.classList.add('selected');
-    this.classList.remove('dice');
-    var value = this.getAttribute('data-value');
-    this.style.backgroundImage = "url('css/img/" + value + ".png')";
+  if ($(this).hasClass('unselected')) {
+    $(this).addClass('selected');
+    $(this).removeClass('unselected');
+    var value = $(this).attr('data-value');
+    $(this).css('background-image', "url('css/img/" + value + ".png')");
     var index = parseInt(value, 10);
     diceInHand.push(index);
     diceInPlay.splice(diceInPlay.indexOf(index), 1);
+    console.log(diceInPlay);
+    console.log(diceInHand);
+  } else if ($(this).hasClass('selected')) {
+    $(this).addClass('unselected');
+    $(this).removeClass('selected');
+    var value = $(this).attr('data-value');
+    $(this).css('background-image', "url('css/img/" + value + value + ".png')");
+    var index = parseInt(value, 10);
+    diceInPlay.push(index);
+    diceInHand.splice(diceInHand.indexOf(index), 1);
+    console.log(diceInPlay);
+    console.log(diceInHand);
   }
 });
-
-// selected.on('click,' function() {
-//   if (this.classList.contains('selected'))
-// })
