@@ -29,8 +29,10 @@ var rollDice = function() {
 
 var showRoll = function() {
   for (var i = 0; i < diceInPlay.length; i++) {
-    var id = '#die' + (i + 1);
-    $(id).html(diceInPlay[i]);
+    var j = i + 1;
+    var id = '#die' + j;
+    dice[i].classList.add('filled')
+    dice[i].style.backgroundImage = "url('css/img/" + diceInPlay[i] + ".png')";
   }
 };
 
@@ -62,13 +64,13 @@ var potentialScore = function() {
     diceSum = diceInPlay.reduce(function(total, amount) {
       return total + amount
     });
-    $('.player1').html(diceSum);
+    $('.unplayed').html(diceSum);
   } else if (diceInPlay.length !== 0 || diceInHand.length !== 0) {
       allDice = diceInHand.concat(diceInPlay);
       diceSum = allDice.reduce(function(total, amount) {
         return total + amount
       });
-      $('.player1').html(diceSum);
+      $('.unplayed').html(diceSum);
     }
   };
 
