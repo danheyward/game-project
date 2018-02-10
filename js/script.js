@@ -64,30 +64,27 @@ var leftScores = function(array, dieNum) {
   return count * dieNum;
 };
 
+// Score Three of a Kind
+
+
 // Score Small + Large Straight but WONT WORK WHY NOTTTTTTT
-var straight = function(array) {
-  var counter = 0;
-  var score = 0;
-  var inOrder = array.sort();
-  for (var i = 0; i < inOrder.length; i++) {
-    if (inOrder[i + 1] === inOrder[i] + 1) {
-      counter = counter + 1;
-    } else if (inOrder[i + 1] === inOrder[i]) {
-      counter = counter;
+
+// Score Full House
+var fullHouse = function(array) {
+  var isFH = false
+  var sorted = array.sort();
+  if ((sorted[0] === sorted [1] && sorted[1] === sorted[2]) &&
+      sorted[3] === sorted[4]) {
+    return 25
+  } else if (sorted[0] === sorted[1] && (sorted[2] === sorted[3] &&
+      sorted[3] === sorted[4])) {
+        return 25
     } else {
-      counter = 0;
+      return 0
     }
-  };
-  if (counter === 4) {
-    score = 40;
-  } else if (counter === 3) {
-    score = 30;
-  } else {
-    score = 0;
-  }
-  return score;
 };
 
+// Score Yahtzee
 var yahtzee = function() {
   allDice = diceInHand.concat(diceInPlay);
   count = 0;
@@ -113,8 +110,11 @@ var potentialScore = function() {
     $('.fours').html(leftScores(allDice, 4));
     $('.fives').html(leftScores(allDice, 5));
     $('.sixes').html(leftScores(allDice, 6));
-    $('.sstraight').html(straight(allDice));
-    $('.lstraight').html(straight(allDice));
+    // $('.threekind').html(ofAKind(allDice, 3));
+    // $('.fourkind').html(ofAKind(allDice, 4));
+    // $('.sstraight').html(straight(allDice));
+    // $('.lstraight').html(straight(allDice));
+    $('.fullhouse').html(fullHouse(allDice));
     $('.chance').html(allDice.reduce(function(accumulator, value) {
       return accumulator + value;
     }, 0));
