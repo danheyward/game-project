@@ -13,7 +13,7 @@ var dice = $('.dice'),
     rollNum = 0,
     die = 0,
     diceSum = 0,
-    diceButton = $('#rollbutton');
+    diceButton = $('.btn');
 // Global Constants + Colors
 var fullHand = 5;
 
@@ -54,56 +54,30 @@ var leftScores = function(array, dieNum) {
 // Show all potential scoring options
 var potentialScore = function() {
   allDice = diceInHand.concat(diceInPlay);
-//   var openings = $('td').filter('.unplayed');
-//   var openingsp1 = openings.filter('.player1');
-//   console.log(openingsp1);
-//     for each(i in openingsp1) {
-//       if (openingsp1.includes('ones')) {
-//         total = leftScores(allDice, 1);
-//         $('ones').html(total);
-//     } else if (openingsp1.includes('twos')) {
-//         total = leftScores(allDice, 2);
-//         $('twos').html(total);
-//     } else if (openingsp1[i].includes('threes')) {
-//         total = leftScores(allDice, 3);
-//         $('threes').html(total);
-//     } else if (openingsp1[i].includes('fours')) {
-//         total = leftScores(allDice, 4);
-//         $('fours').html(total);
-//     } else if (openingsp1[i].includes('fives')) {
-//         total = leftScores(allDice, 5);
-//         $('fives').html(total);
-//     } else if (openingsp1[i].includes('sixes')) {
-//         total = leftScores(allDice, 6);
-//         $('sixes').html(total);
-//     }
-//   };
-// };
-    $('.ones').html(leftScores(allDice, 1));
-    $('.twos').html(leftScores(allDice, 2));
-    $('.threes').html(leftScores(allDice, 3));
-    $('.fours').html(leftScores(allDice, 4));
-    $('.fives').html(leftScores(allDice, 5));
-    $('.sixes').html(leftScores(allDice, 6));
-
-  // } else if (diceInPlay.length !== 0 || diceInHand.length !== 0) {
-  //     allDice = diceInHand.concat(diceInPlay);
-  //     diceSum = allDice.reduce(function(total, amount) {
-  //       return total + amount
-  //     });
-  //     $('.unplayed').html(diceSum);
-  //   }
+  $('.ones').html(leftScores(allDice, 1));
+  $('.twos').html(leftScores(allDice, 2));
+  $('.threes').html(leftScores(allDice, 3));
+  $('.fours').html(leftScores(allDice, 4));
+  $('.fives').html(leftScores(allDice, 5));
+  $('.sixes').html(leftScores(allDice, 6));
   };
 
 
 // Game Turn Function
 diceButton.on('click', function() {
-  if (rollNum < 3) {
+  if (rollNum < 2) {
     diceInPlay = [];
     rollDice();
     showRoll();
     potentialScore();
     rollNum++
+  } else if (rollNum = 2) {
+    diceInPlay = [];
+    rollDice();
+    showRoll();
+    potentialScore();
+    rollNum++
+    $(this).addClass('disabled');
   }
 });
 

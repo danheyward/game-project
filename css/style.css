@@ -4,21 +4,41 @@ html,body {
   text-align: center;
   font-family: 'Pontano Sans', sans-serif;
   font-size: 14px;
+  background-color: #86BBD8;
+  width: 100%;
+}
+
+header {
   background: #33658A;
+  padding-top: 25px;
 }
 
 .gameboard {
   height: 600px;
 }
 
+a {
+  color: #FFFFFF;
+  font-size: 20px;
+}
+
+.btn, .btn:focus {
+  background-color: #33658A;
+}
+
+.btn:hover {
+  background-color: #F26419;
+}
+
 .links {
   margin-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .gameleft, .scoreright {
   margin: 1vw;
   padding: 1vw;
-  background-color: #86BBD8;
+  color: #FFFFFF;
   height: 600px;
   width: 400px;
   display: inline-block;
