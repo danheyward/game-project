@@ -64,27 +64,33 @@ var leftScores = function(array, dieNum) {
   return count * dieNum;
 };
 
-// Score Three, Four and yahtzee
-var searchArray = function(num) {
-  return function(num2) {
-    return num2 === num1;
-  }
-};
-
-var ofAKind = function() {
-  allDice = diceInHand.concat(diceInPlay);
-  for (var i = 0; i > allDice; i++) {
-    var result = allDice.filter(searchArray(i).length);
-    if (result > 4) {
-      sumArray();
-    } else if (result > 3) {
-      sumArray();
-    } else if (result > 2) {
-      sumArray();
+var straight = function(array) {
+  var counter = 0;
+  var score = 0;
+  var inOrder = array.sort();
+  for (var i = 0; i < inOrder.length; i++) {
+    if (inOrder[i + 1] === inOrder[i] + 1) {
+      counter = counter + 1;
+    } else if (inOrder[i + 1] === inOrder[i]) {
+      counter = counter;
+    } else {
+      counter = 0;
     }
+  };
+  if (counter === 4) {
+    score = 40;
+  } else if (counter === 3) {
+    score = 30;
+  } else {
+    score = 0;
   }
+  return score;
 };
 
+// Chance
+var chance = allDice.reduce(function(accumulator, value) {
+  return accumulator + value;
+}, 0);
 
 // Show all potential scoring options
 var potentialScore = function() {
@@ -95,9 +101,11 @@ var potentialScore = function() {
     $('.fours').html(leftScores(allDice, 4));
     $('.fives').html(leftScores(allDice, 5));
     $('.sixes').html(leftScores(allDice, 6));
-    $('.threekind').html(ofAKind());
-    $('.fourkind').html(ofAKind());
-    $('.yahtzee').html(ofAKind());
+    $('.sstraight').html(straight(allDice));
+    $('.lstraight').html(straight(allDice));
+    $('.chance').html(allDice.reduce(function(accumulator, value) {
+      return accumulator + value;
+    }, 0));
   };
 
 
@@ -192,21 +200,23 @@ $('#buttondiv').on('click', function() {
 
 
 dice.on('click', function() {
-  if ($(this).hasClass('unselected') && rollNum < 3) {
-    $(this).addClass('selected');
-    $(this).removeClass('unselected');
-    var value = $(this).attr('data-value');
-    $(this).css('background-image', "url('css/img/" + value + ".png')");
-    var index = parseInt(value, 10);
-    diceInHand.push(index);
-    diceInPlay.splice(diceInPlay.indexOf(index), 1);
-  } else if ($(this).hasClass('selected') && rollNum < 3) {
-    $(this).addClass('unselected');
-    $(this).removeClass('selected');
-    var value = $(this).attr('data-value');
-    $(this).css('background-image', "url('css/img/" + value + value + ".png')");
-    var index = parseInt(value, 10);
-    diceInPlay.push(index);
-    diceInHand.splice(diceInHand.indexOf(index), 1);
-  }
+  if (rollNum === 0) {
+    return;
+  } if ($(this).hasClass('unselected') && rollNum < 3) {
+      $(this).addClass('selected');
+      $(this).removeClass('unselected');
+      var value = $(this).attr('data-value');
+      $(this).css('background-image', "url('css/img/" + value + ".png')");
+      var index = parseInt(value, 10);
+      diceInHand.push(index);
+      diceInPlay.splice(diceInPlay.indexOf(index), 1);
+    } else if ($(this).hasClass('selected') && rollNum < 3) {
+        $(this).addClass('unselected');
+        $(this).removeClass('selected');
+        var value = $(this).attr('data-value');
+        $(this).css('background-image', "url('css/img/" + value + value + ".png')");
+        var index = parseInt(value, 10);
+        diceInPlay.push(index);
+        diceInHand.splice(diceInHand.indexOf(index), 1);
+    }
 });
