@@ -1,15 +1,17 @@
 // Player Variables
 var player1 = true,
     player2 = false,
-    player1Score = 0,
-    player2Score = 0;
+    player1LeftScore = 0,
+    player2LeftScore = 0,
+    player1TotalScore = 0,
+    player2TotalScore = 0;
 // Dice-specific Variables
 var dice = $('.dice'),
     unselected = $('.unselected'),
     selected = $('.selected'),
     diceInPlay = [],
     diceInHand = [],
-    allDice = [],
+    allDice = diceInHand.concat(diceInPlay),
     rollNum = 0,
     die = 0,
     diceSum = 0,
@@ -40,6 +42,15 @@ var showRoll = function() {
   }
 };
 
+// Adds up all values of the array
+var sumArray = function() {
+  allDice = diceInHand.concat(diceInPlay);
+  sum = 0;
+  for (var i = 0; i < allDice.length; i++) {
+    sum += numbers[i]
+  }
+};
+
 // Score the left side of the board
 var leftScores = function(array, dieNum) {
   var count = 0;
@@ -51,6 +62,28 @@ var leftScores = function(array, dieNum) {
   return count * dieNum;
 };
 
+// Score Three, Four and yahtzee
+var searchArray = function(num) {
+  return function(num2) {
+    return num2 === num1;
+  }
+};
+
+var ofAKind = function() {
+  allDice = diceInHand.concat(diceInPlay);
+  for (var i = 0; i > allDice; i++) {
+    var result = allDice.filter(searchArray(i).length);
+    if (result > 4) {
+      sumArray();
+    } else if (result > 3) {
+      sumArray();
+    } else if (result > 2) {
+      sumArray();
+    }
+  }
+};
+
+
 // Show all potential scoring options
 var potentialScore = function() {
   allDice = diceInHand.concat(diceInPlay);
@@ -60,11 +93,15 @@ var potentialScore = function() {
   $('.fours').html(leftScores(allDice, 4));
   $('.fives').html(leftScores(allDice, 5));
   $('.sixes').html(leftScores(allDice, 6));
+  $('.threekind').html(ofAKind());
+  $('.fourkind').html(ofAKind());
+  $('.yahtzee').html(ofAKind());
   };
 
 
 // Game Turn Function
 diceButton.on('click', function() {
+  $('#rolleddiv').show();
   if (rollNum < 2) {
     diceInPlay = [];
     rollDice();
@@ -80,6 +117,29 @@ diceButton.on('click', function() {
     $(this).addClass('disabled');
   }
 });
+
+// Turn End Events
+$('.player1').on('click', function() {
+  if (rollNum > 0) {
+    $('.p1board').hide();
+    $('.p2board').show();
+    $('#rolleddiv').hide();
+    $('.dice').css('background-image', '');
+    diceButton.removeClass('disabled');
+    rollNum = 0;
+  }
+});
+
+$('.player2').on('click', function() {
+  if (rollNum > 0) {
+    $('.p2board').hide();
+    $('.p1board').show();
+    $('.dice').css('background-image', '');
+    diceButton.removeClass('disabled');
+    rollNum = 0;
+  }
+})
+
 
 dice.on('click', function() {
   if ($(this).hasClass('unselected') && rollNum < 3) {

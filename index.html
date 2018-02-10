@@ -19,8 +19,7 @@
 
     <main class='gameboard'>
 
-      <div class='gameleft'>
-
+      <div class='dicearea'>
         <div id='rolleddiv' class='ingame'>
           <div id='die1' class='dice unselected'></div>
           <div id='die2' class='dice unselected'></div>
@@ -30,8 +29,11 @@
         </div>
 
         <div id='buttondiv' class='ingame'>
-          <a class="waves-effect waves-light btn">Roll</a>
+          <a class="waves-effect waves-light btn btn-large">Roll</a>
         </div>
+      </div>
+
+      <div class='gameleft'>
 
         <table class='p1board uppertable highlight'>
           <tbody>
@@ -60,12 +62,12 @@
               <td class='sixes player1 unplayed'></td>
             </tr>
             <tr>
-              <td>Total Section Score</td>
-              <td id='upperscorep1' class='player1'></td>
-            </tr>
-            <tr>
               <td>Bonus</td>
               <td id='bonusp1' class='player1'></td>
+            </tr>
+            <tr>
+              <td>Total Section Score</td>
+              <td id='upperscorep1' class='player1'></td>
             </tr>
         </table>
 
@@ -96,12 +98,12 @@
               <td class='sixes player2 unplayed'></td>
             </tr>
             <tr>
-              <td>Total Section Score</td>
-              <td id='upperscorep2' class='player2'></td>
-            </tr>
-            <tr>
               <td>Bonus</td>
               <td id='bonusp2' class='player1'></td>
+            </tr>
+            <tr>
+              <td>Total Section Score</td>
+              <td id='upperscorep2' class='player2'></td>
             </tr>
         </table>
       </div>
@@ -138,16 +140,12 @@
               <td class='chance player1 unplayed'></td>
             </tr>
             <tr>
-              <td>Yahtzee Bonus</td>
+              <td class='yahtzeebonus'>Yahtzee Bonus</td>
               <td class='yahtzeebonus player1'></td>
             </tr>
             <tr>
               <td>Total Section Score</td>
               <td id='lowerscorep1' class='player1'></td>
-            </tr>
-            <tr>
-              <td>Total Score</td>
-              <td id='totalp1' class='player1'></td>
             </tr>
           </tbody>
         </table>
@@ -183,17 +181,17 @@
               <td class='chance player2 unplayed'></td>
             </tr>
             <tr>
-              <td>Yahtzee Bonus</td>
+              <td class='yahtzeebonus'>Yahtzee Bonus</td>
               <td class='yahtzeebonus player2'></td>
             </tr>
             <tr>
               <td>Total Section Score</td>
               <td id='lowerscorep2' class='player2'></td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td>Total Score</td>
               <td id='totalp2' class='player2'></td>
-            </tr>
+            </tr> -->
           </tbody>
         </table>
       </div>
