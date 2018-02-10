@@ -10,12 +10,18 @@
   </head>
   <body>
 
-    <header>
+    <header class='gameheader'>
       <h1>Yahtzee</h1>
-        <div class='links'>
-          <a href='#'>Instructions</a>
-        </div>
     </header>
+
+    <main class='startpage'>
+      <h1 id='startpage'>Yahtzee</h1>
+      <img id='tumblingdice' src='css/img/rolling_dice.gif'>
+      <div id='buttondiv' class='ingame'>
+        <a class="waves-effect waves-light btn btn-large">START GAME</a>
+      </div>
+      <a id='instructions' href='#'>Instructions</a>
+    </main>
 
     <main class='gameboard'>
 
@@ -38,7 +44,7 @@
         </div>
 
         <div id='buttondiv' class='ingame'>
-          <a class="waves-effect waves-light btn btn-large">ROLLS LEFT: 3</a>
+          <a id='rollbutton' class="waves-effect waves-light btn btn-large">ROLLS LEFT: 3</a>
         </div>
       </div>
 

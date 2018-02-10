@@ -15,7 +15,7 @@ var dice = $('.dice'),
     rollNum = 0,
     die = 0,
     diceSum = 0,
-    diceButton = $('.btn');
+    diceButton = $('#rollbutton');
 // Global Constants + Colors
 var fullHand = 5;
 
@@ -155,6 +155,12 @@ $('.player2').on('click', function() {
     rollNum = 0;
     diceInHand = [];
   }
+})
+
+$('#buttondiv').on('click', function() {
+  $('.gameboard').show();
+  $('.gameheader').show();
+  $('.startpage').hide();
 })
 
 

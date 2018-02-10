@@ -8,9 +8,25 @@ html,body {
   width: 100%;
 }
 
+#instructions {
+  font-size: 15px;
+}
+
+#startpage{
+  padding-top: 50px;
+}
+
+.gameboard, .gameheader {
+  display: none;
+}
+
+#tumblingdice {
+  width: 40vw;
+}
+
 header {
   background: #33658A;
-  padding-top: 25px;
+  padding: 50px 0;
 }
 
 a {
