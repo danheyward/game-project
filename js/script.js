@@ -87,15 +87,15 @@ var ofAKind = function() {
 // Show all potential scoring options
 var potentialScore = function() {
   allDice = diceInHand.concat(diceInPlay);
-  $('.ones').html(leftScores(allDice, 1));
-  $('.twos').html(leftScores(allDice, 2));
-  $('.threes').html(leftScores(allDice, 3));
-  $('.fours').html(leftScores(allDice, 4));
-  $('.fives').html(leftScores(allDice, 5));
-  $('.sixes').html(leftScores(allDice, 6));
-  $('.threekind').html(ofAKind());
-  $('.fourkind').html(ofAKind());
-  $('.yahtzee').html(ofAKind());
+    $('.ones').html(leftScores(allDice, 1));
+    $('.twos').html(leftScores(allDice, 2));
+    $('.threes').html(leftScores(allDice, 3));
+    $('.fours').html(leftScores(allDice, 4));
+    $('.fives').html(leftScores(allDice, 5));
+    $('.sixes').html(leftScores(allDice, 6));
+    $('.threekind').html(ofAKind());
+    $('.fourkind').html(ofAKind());
+    $('.yahtzee').html(ofAKind());
   };
 
 
@@ -107,6 +107,7 @@ diceButton.on('click', function() {
     rollDice();
     showRoll();
     potentialScore();
+    $('.btn').html('ROLLS LEFT: ' + (2 - rollNum));
     rollNum++
   } else if (rollNum = 2) {
     diceInPlay = [];
@@ -114,6 +115,7 @@ diceButton.on('click', function() {
     showRoll();
     potentialScore();
     rollNum++
+    $('.btn').html('Place Your Score!');
     $(this).addClass('disabled');
   }
 });
@@ -131,6 +133,7 @@ $('.player1').on('click', function() {
     $('body').css('background-color', '#F26419');
     $('#player1title').hide();
     $('#player2title').show();
+    $('.btn').html('ROLLS LEFT: 3');
     rollNum = 0;
     diceInHand = [];
   }
@@ -148,6 +151,7 @@ $('.player2').on('click', function() {
     $('body').css('background-color', '#86BBD8');
     $('#player2title').hide();
     $('#player1title').show();
+    $('.btn').html('ROLLS LEFT: 3');
     rollNum = 0;
     diceInHand = [];
   }
