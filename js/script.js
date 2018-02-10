@@ -123,10 +123,16 @@ $('.player1').on('click', function() {
   if (rollNum > 0) {
     $('.p1board').hide();
     $('.p2board').show();
-    $('#rolleddiv').hide();
+    $('.dice').removeClass('rolled');
+    $('.dice').removeClass('selected');
+    $('.dice').addClass('unselected');
     $('.dice').css('background-image', '');
     diceButton.removeClass('disabled');
+    $('body').css('background-color', '#F26419');
+    $('#player1title').hide();
+    $('#player2title').show();
     rollNum = 0;
+    diceInHand = [];
   }
 });
 
@@ -134,9 +140,16 @@ $('.player2').on('click', function() {
   if (rollNum > 0) {
     $('.p2board').hide();
     $('.p1board').show();
+    $('.dice').removeClass('rolled');
+    $('.dice').removeClass('selected');
+    $('.dice').addClass('unselected');
     $('.dice').css('background-image', '');
     diceButton.removeClass('disabled');
+    $('body').css('background-color', '#86BBD8');
+    $('#player2title').hide();
+    $('#player1title').show();
     rollNum = 0;
+    diceInHand = [];
   }
 })
 

@@ -18,6 +18,15 @@ a {
   font-size: 20px;
 }
 
+#player1title {
+  color: #F26419;
+}
+
+#player2title {
+  color: #33658A;
+  display: none;
+}
+
 .btn {
   margin-bottom: 10px;
 }
