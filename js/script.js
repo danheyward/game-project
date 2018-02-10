@@ -65,18 +65,36 @@ var leftScores = function(array, dieNum) {
 };
 
 // Score Three of a Kind
-var ofAKind = function(array) {
+var threeOfAKind = function(array) {
   var sorted = array.sort();
-  for (var i = 0; i < array.length - 2; i++) {
-    if ((sorted[i] === sorted[i + 1] && sorted[i + 1] === sorted[i + 2])) {
-      return array.reduce(function(accumulator, value) {
-        return accumulator + value;
-      }, 0);
-      break;
-    } else {
-      return 0;
-    }
-  };
+  var sum = array.reduce(function(accumulator, value) {
+    return accumulator + value;
+  }, 0);
+  if ((sorted[0] === sorted[1] && sorted[1] === sorted[2]) ||
+      (sorted[1] === sorted[2] && sorted[2] === sorted[3]) ||
+      (sorted[2] === sorted[3] && sorted[3] === sorted[4])) {
+    return sum;
+  } else {
+    return 0
+  }
+};
+
+
+
+// Score Three of a Kind
+var fourOfAKind = function(array) {
+  var sorted = array.sort();
+  var sum = array.reduce(function(accumulator, value) {
+    return accumulator + value;
+  }, 0);
+  if ((sorted[0] === sorted[1] && sorted[1] === sorted[2]
+      && sorted[2] === sorted[3]) ||
+      (sorted[1] === sorted[2] && sorted[2] === sorted[3]
+      && sorted[3] === sorted[4])) {
+    return sum;
+  } else {
+    return 0
+  }
 };
 
 
@@ -122,8 +140,8 @@ var potentialScore = function() {
     $('.fours').html(leftScores(allDice, 4));
     $('.fives').html(leftScores(allDice, 5));
     $('.sixes').html(leftScores(allDice, 6));
-    $('.threekind').html(ofAKind(allDice));
-    // $('.fourkind').html(ofAKind(allDice, 4));
+    $('.threekind').html(threeOfAKind(allDice));
+    $('.fourkind').html(fourOfAKind(allDice));
     // $('.sstraight').html(straight(allDice));
     // $('.lstraight').html(straight(allDice));
     $('.fullhouse').html(fullHouse(allDice));
@@ -171,6 +189,8 @@ var switch2p2 = function() {
   player2Turn = $('.player2.unplayed');
   rollNum = 0;
   diceInHand = [];
+  diceInPlay = [];
+  allDice = diceInHand.concat(diceInPlay);
 };
 
 var switch2p1 = function() {
@@ -190,6 +210,8 @@ var switch2p1 = function() {
   player2Turn = $('.player2.unplayed');
   rollNum = 0;
   diceInHand = [];
+  diceInPlay = [];
+  allDice = diceInHand.concat(diceInPlay);
 };
 
 // Turn End Events
