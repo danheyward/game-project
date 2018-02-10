@@ -134,8 +134,8 @@ var switch2p2 = function() {
   $('#player1title').hide();
   $('#player2title').show();
   $('.btn').html('ROLLS LEFT: 3');
-  player1Turn = $('.player1');
-  player2Turn = $('.player2');
+  player1Turn = $('.player1.unplayed');
+  player2Turn = $('.player2.unplayed');
   rollNum = 0;
   diceInHand = [];
 };
@@ -153,15 +153,16 @@ var switch2p1 = function() {
   $('#player2title').hide();
   $('#player1title').show();
   $('.btn').html('ROLLS LEFT: 3');
-  player1Turn = $('.player1');
-  player2Turn = $('.player2');
+  player1Turn = $('.player1.unplayed');
+  player2Turn = $('.player2.unplayed');
   rollNum = 0;
   diceInHand = [];
 };
 
 // Turn End Events
 player1Turn.on('click', function() {
-  if (rollNum > 0) {
+  if (this.className === 'savedp1') {
+  } else if (rollNum > 0) {
     var addScore = $(this).html()
     player1TotalScore += parseInt(addScore, 10);
     this.className = 'savedp1';
@@ -172,7 +173,8 @@ player1Turn.on('click', function() {
 });
 
 player2Turn.on('click', function() {
-  if (rollNum > 0) {
+  if (this.className === 'savedp2') {
+  } else if (rollNum > 0) {
     var addScore = $(this).html()
     player2TotalScore += parseInt(addScore, 10);
     this.className = 'savedp2'
