@@ -65,13 +65,25 @@ var leftScores = function(array, dieNum) {
 };
 
 // Score Three of a Kind
+var ofAKind = function(array) {
+  var sorted = array.sort();
+  for (var i = 0; i < array.length - 2; i++) {
+    if ((sorted[i] === sorted[i + 1] && sorted[i + 1] === sorted[i + 2])) {
+      return array.reduce(function(accumulator, value) {
+        return accumulator + value;
+      }, 0);
+      break;
+    } else {
+      return 0;
+    }
+  };
+};
 
 
 // Score Small + Large Straight but WONT WORK WHY NOTTTTTTT
 
 // Score Full House
 var fullHouse = function(array) {
-  var isFH = false
   var sorted = array.sort();
   if ((sorted[0] === sorted [1] && sorted[1] === sorted[2]) &&
       sorted[3] === sorted[4]) {
@@ -110,7 +122,7 @@ var potentialScore = function() {
     $('.fours').html(leftScores(allDice, 4));
     $('.fives').html(leftScores(allDice, 5));
     $('.sixes').html(leftScores(allDice, 6));
-    // $('.threekind').html(ofAKind(allDice, 3));
+    $('.threekind').html(ofAKind(allDice));
     // $('.fourkind').html(ofAKind(allDice, 4));
     // $('.sstraight').html(straight(allDice));
     // $('.lstraight').html(straight(allDice));
