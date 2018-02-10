@@ -99,8 +99,6 @@ var fourOfAKind = function(array) {
 };
 
 
-// Score Small + Large Straight but WONT WORK WHY NOTTTTTTT
-
 // Score Full House
 var fullHouse = function(array) {
   var sorted = array.sort();
@@ -113,6 +111,33 @@ var fullHouse = function(array) {
     } else {
       return 0
     }
+};
+
+// Score Small Straight
+var sStraight = function(array) {
+  if ((array.indexOf(1) !== -1) && (array.indexOf(2) !== -1) &&
+      (array.indexOf(3) !== -1) && (array.indexOf(3) !== -1)) {
+    return 30
+  } else if ((array.indexOf(2) !== -1) && (array.indexOf(3) !== -1) &&
+      (array.indexOf(4) !== -1) && (array.indexOf(5) !== -1)) {
+    return 30
+  } else if ((array.indexOf(3) !== -1) && (array.indexOf(4) !== -1) &&
+      (array.indexOf(5) !== -1) && (array.indexOf(6) !== -1)) {
+    return 30
+  } else {
+    return 0
+  }
+};
+
+// Score Large Straight
+var lStraight = function(array) {
+  var sorted = array.sort();
+  if ((sorted[0] === (sorted[1] - 1)) && (sorted[1] === (sorted[2] - 1)) &&
+      (sorted[2] === (sorted[3] - 1)) && (sorted[3] === (sorted[4] - 1))) {
+        return 40
+  } else {
+    return 0
+  };
 };
 
 // Score Yahtzee
@@ -143,8 +168,8 @@ var potentialScore = function() {
     $('.sixes').html(leftScores(allDice, 6));
     $('.threekind').html(threeOfAKind(allDice));
     $('.fourkind').html(fourOfAKind(allDice));
-    // $('.sstraight').html(straight(allDice));
-    // $('.lstraight').html(straight(allDice));
+    $('.sstraight').html(sStraight(allDice));
+    $('.lstraight').html(lStraight(allDice));
     $('.fullhouse').html(fullHouse(allDice));
     $('.chance').html(allDice.reduce(function(accumulator, value) {
       return accumulator + value;
