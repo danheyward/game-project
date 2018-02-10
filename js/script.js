@@ -64,6 +64,7 @@ var leftScores = function(array, dieNum) {
   return count * dieNum;
 };
 
+// Score Small + Large Straight but WONT WORK WHY NOTTTTTTT
 var straight = function(array) {
   var counter = 0;
   var score = 0;
@@ -87,10 +88,21 @@ var straight = function(array) {
   return score;
 };
 
-// Chance
-var chance = allDice.reduce(function(accumulator, value) {
-  return accumulator + value;
-}, 0);
+var yahtzee = function() {
+  allDice = diceInHand.concat(diceInPlay);
+  count = 0;
+  score = 0;
+  for (var i = 0; i < (allDice.length + 1); i++) {
+    if (allDice.indexOf(i) === -1) {
+      count++
+    }
+  }
+  if (count >= 5) {
+    score = 50;
+  }
+  return score
+};
+
 
 // Show all potential scoring options
 var potentialScore = function() {
@@ -106,6 +118,7 @@ var potentialScore = function() {
     $('.chance').html(allDice.reduce(function(accumulator, value) {
       return accumulator + value;
     }, 0));
+    $('.yahtzee').html(yahtzee());
   };
 
 
