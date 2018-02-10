@@ -120,40 +120,51 @@ diceButton.on('click', function() {
   }
 });
 
+var switch2p2 = function() {
+  $('.p1board').hide();
+  $('.p2board').show();
+  $('.dice').removeClass('rolled');
+  $('.dice').removeClass('selected');
+  $('.dice').addClass('unselected');
+  $('.dice').css('background-image', '');
+  diceButton.removeClass('disabled');
+  $('body').css('background-color', '#F26419');
+  $('#player1title').hide();
+  $('#player2title').show();
+  $('.btn').html('ROLLS LEFT: 3');
+  rollNum = 0;
+  diceInHand = [];
+};
+
+var switch2p1 = function() {
+  $('.p2board').hide();
+  $('.p1board').show();
+  $('.dice').removeClass('rolled');
+  $('.dice').removeClass('selected');
+  $('.dice').addClass('unselected');
+  $('.dice').css('background-image', '');
+  this.className = 'saved';
+  diceButton.removeClass('disabled');
+  $('body').css('background-color', '#86BBD8');
+  $('#player2title').hide();
+  $('#player1title').show();
+  $('.btn').html('ROLLS LEFT: 3');
+  rollNum = 0;
+  diceInHand = [];
+};
+
 // Turn End Events
 $('.player1').on('click', function() {
   if (rollNum > 0) {
-    $('.p1board').hide();
-    $('.p2board').show();
-    $('.dice').removeClass('rolled');
-    $('.dice').removeClass('selected');
-    $('.dice').addClass('unselected');
-    $('.dice').css('background-image', '');
-    diceButton.removeClass('disabled');
-    $('body').css('background-color', '#F26419');
-    $('#player1title').hide();
-    $('#player2title').show();
-    $('.btn').html('ROLLS LEFT: 3');
-    rollNum = 0;
-    diceInHand = [];
+    this.className = 'savedp1';
+    setInterval(switch2p2, 2000);
   }
 });
 
 $('.player2').on('click', function() {
   if (rollNum > 0) {
-    $('.p2board').hide();
-    $('.p1board').show();
-    $('.dice').removeClass('rolled');
-    $('.dice').removeClass('selected');
-    $('.dice').addClass('unselected');
-    $('.dice').css('background-image', '');
-    diceButton.removeClass('disabled');
-    $('body').css('background-color', '#86BBD8');
-    $('#player2title').hide();
-    $('#player1title').show();
-    $('.btn').html('ROLLS LEFT: 3');
-    rollNum = 0;
-    diceInHand = [];
+    this.className = 'savedp2'
+    setInterval(switch2p1, 2000);
   }
 })
 
