@@ -5,6 +5,7 @@ var player1 = true,
     player2LeftScore = 0,
     player1TotalScore = 0,
     player2TotalScore = 0;
+    turnCount = 0;
 // Dice-specific Variables
 var dice = $('.dice'),
     unselected = $('.unselected'),
@@ -229,15 +230,22 @@ player1Turn.on('click', function() {
 
 player2Turn.on('click', function() {
   if (this.className === 'savedp2') {
-  } else if (rollNum > 0) {
-    var addScore = $(this).html()
+  } else if (rollNum > 0 && turnCount < 12) {
+    var addScore = $(this).html();
     player2TotalScore += parseInt(addScore, 10);
-    this.className = 'savedp2'
+    this.className = 'savedp2';
     $('.unplayed').html('');
     $('#rollbutton').addClass('disabled');
+    turnCount++;
     setTimeout(switch2p1, 2000);
+  } else if (turnCount === 12) {
+    var addScore = $(this).html();
+    player2TotalScore += parseInt(addScore, 10);
+    this.className = 'savedp2';
+    $('.p2board').hide();
+    $('.p1board').hide();
   }
-})
+});
 
 $('#buttondiv').on('click', function() {
   $('.gameboard').show();
