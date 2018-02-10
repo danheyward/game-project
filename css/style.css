@@ -92,8 +92,22 @@ h1 {
   cursor: pointer;
 }
 
+.savedp1, .savedp2 {
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: 800;
+}
+
+.savedp1 {
+  background-color: #F26419;
+}
+
+.savedp2 {
+  background-color: #33658A;
+}
+
 table.highlight tbody tr:hover, td:hover {
-    color: #33658A !important;
+    color: #86BBD8 !important;
 }
 
 td {
@@ -102,6 +116,7 @@ td {
 
 .unplayed {
   color: #FFFFFF;
+  text-align: center;
   font-weight: 150;
   cursor: pointer;
 }

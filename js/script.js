@@ -15,7 +15,9 @@ var dice = $('.dice'),
     rollNum = 0,
     die = 0,
     diceSum = 0,
-    diceButton = $('#rollbutton');
+    diceButton = $('#rollbutton'),
+    player1Turn = $('.player1.unplayed'),
+    player2Turn = $('.player2.unplayed');
 // Global Constants + Colors
 var fullHand = 5;
 
@@ -132,6 +134,8 @@ var switch2p2 = function() {
   $('#player1title').hide();
   $('#player2title').show();
   $('.btn').html('ROLLS LEFT: 3');
+  player1Turn = $('.player1');
+  player2Turn = $('.player2');
   rollNum = 0;
   diceInHand = [];
 };
@@ -149,22 +153,32 @@ var switch2p1 = function() {
   $('#player2title').hide();
   $('#player1title').show();
   $('.btn').html('ROLLS LEFT: 3');
+  player1Turn = $('.player1');
+  player2Turn = $('.player2');
   rollNum = 0;
   diceInHand = [];
 };
 
 // Turn End Events
-$('.player1').on('click', function() {
+player1Turn.on('click', function() {
   if (rollNum > 0) {
+    var addScore = $(this).html()
+    player1TotalScore += parseInt(addScore, 10);
     this.className = 'savedp1';
-    setInterval(switch2p2, 2000);
+    $('.unplayed').html('');
+    $('#rollbutton').addClass('disabled');
+    setTimeout(switch2p2, 2000);
   }
 });
 
-$('.player2').on('click', function() {
+player2Turn.on('click', function() {
   if (rollNum > 0) {
+    var addScore = $(this).html()
+    player2TotalScore += parseInt(addScore, 10);
     this.className = 'savedp2'
-    setInterval(switch2p1, 2000);
+    $('.unplayed').html('');
+    $('#rollbutton').addClass('disabled');
+    setTimeout(switch2p1, 2000);
   }
 })
 
