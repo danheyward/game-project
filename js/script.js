@@ -177,6 +177,8 @@ var potentialScore = function() {
     $('.yahtzee').html(yahtzee());
   };
 
+// Check to see if Bonus condition is met
+
 
 // Game Turn Function
 diceButton.on('click', function() {
