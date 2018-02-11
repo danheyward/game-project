@@ -3,7 +3,7 @@ var player1 = true,
     player2 = false,
     player1TotalScore = 0,
     player2TotalScore = 0;
-    turnCount = 12;
+    turnCount = 0;
 // Dice-specific Variables
 var dice = $('.dice'),
     unselected = $('.unselected'),
