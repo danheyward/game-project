@@ -5,7 +5,7 @@ var player1 = true,
     player2LeftScore = 0,
     player1TotalScore = 0,
     player2TotalScore = 0;
-    turnCount = 0;
+    turnCount = 12;
 // Dice-specific Variables
 var dice = $('.dice'),
     unselected = $('.unselected'),
@@ -141,19 +141,13 @@ var lStraight = function(array) {
 };
 
 // Score Yahtzee
-var yahtzee = function() {
-  allDice = diceInHand.concat(diceInPlay);
-  count = 0;
-  score = 0;
-  for (var i = 0; i < (allDice.length + 1); i++) {
-    if (allDice.indexOf(i) === -1) {
-      count++
-    }
-  }
-  if (count >= 5) {
-    score = 50;
-  }
-  return score
+var yahtzee = function(array) {
+  if ((array[0] === array[1]) && (array[1] === array[2]) &&
+      (array[2] === array[3]) && (array[3] === array[4])) {
+        return 50;
+      } else {
+        return 0;
+      }
 };
 
 
@@ -174,7 +168,7 @@ var potentialScore = function() {
     $('.chance').html(allDice.reduce(function(accumulator, value) {
       return accumulator + value;
     }, 0));
-    $('.yahtzee').html(yahtzee());
+    $('.yahtzee').html(yahtzee(allDice));
   };
 
 // Check to see if Bonus condition is met
@@ -188,7 +182,7 @@ diceButton.on('click', function() {
     rollDice();
     showRoll();
     potentialScore();
-    $('.btn').html('ROLLS LEFT: ' + (2 - rollNum));
+    $('#rollbutton').html('ROLLS LEFT: ' + (2 - rollNum));
     rollNum++
   } else if (rollNum = 2) {
     diceInPlay = [];
@@ -196,7 +190,7 @@ diceButton.on('click', function() {
     showRoll();
     potentialScore();
     rollNum++
-    $('.btn').html('Place Your Score!');
+    $('#rollbutton').html('Place Your Score!');
     $(this).addClass('disabled');
   }
 });
@@ -212,7 +206,7 @@ var switch2p2 = function() {
   $('body').css('background-color', '#F26419');
   $('#player1title').hide();
   $('#player2title').show();
-  $('.btn').html('ROLLS LEFT: 3');
+  $('#rollbutton').html('ROLLS LEFT: 3');
   player1Turn = $('.player1.unplayed');
   player2Turn = $('.player2.unplayed');
   rollNum = 0;
@@ -233,7 +227,7 @@ var switch2p1 = function() {
   $('body').css('background-color', '#86BBD8');
   $('#player2title').hide();
   $('#player1title').show();
-  $('.btn').html('ROLLS LEFT: 3');
+  $('#buttondiv').html('ROLLS LEFT: 3');
   player1Turn = $('.player1.unplayed');
   player2Turn = $('.player2.unplayed');
   rollNum = 0;
@@ -241,6 +235,14 @@ var switch2p1 = function() {
   diceInPlay = [];
   allDice = diceInHand.concat(diceInPlay);
 };
+
+// Game Ending function
+var gameOver = function() {
+  $('.gameboard').hide();
+  $('.gameover').show();
+  $('.startpage').hide();
+  $('#rollbuttondiv').hide();
+}
 
 // Turn End Events
 player1Turn.on('click', function() {
@@ -269,8 +271,8 @@ player2Turn.on('click', function() {
     var addScore = $(this).html();
     player2TotalScore += parseInt(addScore, 10);
     this.className = 'savedp2';
-    $('.p2board').hide();
-    $('.p1board').hide();
+    $('#rollbutton').addClass('disabled');
+    setTimeout(gameOver, 2000);
   }
 });
 

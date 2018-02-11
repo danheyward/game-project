@@ -128,3 +128,9 @@ td {
 .yahtzeebonus {
   display: none;
 }
+
+.gameover {
+  display: none;
+  background-color: #33658A;
+  height: 50vh;
+}
