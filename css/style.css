@@ -4,22 +4,67 @@ html,body {
   text-align: center;
   font-family: 'Pontano Sans', sans-serif;
   font-size: 14px;
-  background: #33658A;
+  background-color: #86BBD8;
+  width: 100%;
 }
 
-.gameboard {
-  height: 600px;
+#instructions {
+  font-size: 15px;
+}
+
+#startpage{
+  padding-top: 50px;
+}
+
+.gameboard, .gameheader {
+  display: none;
+}
+
+#tumblingdice {
+  width: 40vw;
+}
+
+header {
+  background: #33658A;
+  padding: 50px 0;
+}
+
+a {
+  color: #FFFFFF;
+  font-size: 20px;
+}
+
+#player1title {
+  color: #F26419;
+}
+
+#player2title {
+  color: #33658A;
+  display: none;
+}
+
+.btn {
+  margin-bottom: 10px;
+}
+
+.btn, .btn:focus {
+  background-color: #33658A;
+}
+
+.btn:hover {
+  background-color: #F26419;
 }
 
 .links {
   margin-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .gameleft, .scoreright {
   margin: 1vw;
   padding: 1vw;
-  background-color: #86BBD8;
-  height: 600px;
+  color: #FFFFFF;
+  height: 400px;
   width: 400px;
   display: inline-block;
   border-radius: 5%;
@@ -30,33 +75,79 @@ html,body {
   position: relative;
 }
 
-
 h1 {
   color: #F26419;
 }
 
 .dice, .selected, .diceinhand {
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
   margin: 10px 0;
 }
 
 .rolled, .selected {
   background-size: 100%;
   background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.savedp1, .savedp2 {
+  color: #FFFFFF;
+  text-align: center;
+  font-weight: 800;
+}
+
+.savedp1 {
+  background-color: #F26419;
+}
+
+.savedp2 {
+  background-color: #33658A;
+}
+
+table.highlight tbody tr:hover, td:hover {
+    color: #86BBD8 !important;
 }
 
 td {
-  width: 3vw;
+  width: 25px;
 }
 
 .unplayed {
-  color: lightgray;
+  color: #FFFFFF;
+  text-align: center;
   font-weight: 150;
   cursor: pointer;
 }
 
 .p2board {
   display: none;
+}
+
+.yahtzeebonus {
+  display: none;
+}
+
+.gameover {
+  display: none;
+  background-color: #33658A;
+  height: 50vh;
+  vertical-align: middle;
+}
+
+.scores {
+  /* margin: 200px 0px 0px 0px */
+  line-height: 25px;
+  padding-top: 50px;
+}
+
+.winner {
+  color: #F26419;
+  font-size: 30px;
+  padding: 10px;
+}
+
+.loser {
+  color: #FFFFFF;
 }

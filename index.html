@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>Daniel's New Game</title>
+    <title>Daniel's Yahtzee</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
@@ -10,17 +10,31 @@
   </head>
   <body>
 
-    <header>
+    <header class='gameheader'>
       <h1>Yahtzee</h1>
-        <div class='links'>
-          <a href='#'>Instructions</a>
-        </div>
     </header>
+
+    <main class='startpage'>
+      <h1 id='startpage'>Yahtzee</h1>
+      <img id='tumblingdice' src='css/img/rolling_dice.gif'>
+      <div id='buttondiv' class='ingame'>
+        <a class="waves-effect waves-light btn btn-large">START GAME</a>
+      </div>
+      <a id='instructions' href='http://bit.ly/2nXJNgM' target="_blank">Instructions</a>
+    </main>
 
     <main class='gameboard'>
 
-      <div class='gameleft'>
+      <div>
+        <div id='player1title' class='scorearea'>
+          <h3>PLAYER 1</h3>
+        </div>
+        <div id='player2title' class='scorearea'>
+          <h3>PLAYER 2</h3>
+        </div>
+      </div>
 
+      <div class='dicearea'>
         <div id='rolleddiv' class='ingame'>
           <div id='die1' class='dice unselected'></div>
           <div id='die2' class='dice unselected'></div>
@@ -29,43 +43,40 @@
           <div id='die5' class='dice unselected'></div>
         </div>
 
-        <div id='buttondiv' class='ingame'>
-          <button id='rollbutton' type='button' value='roll'>ROLL!</button>
+        <div id='rollbuttondiv' class='ingame'>
+          <a id='rollbutton' class="waves-effect waves-light btn btn-large">ROLLS LEFT: 3</a>
         </div>
+      </div>
+
+
+
+      <div class='gameleft'>
 
         <table class='p1board uppertable highlight'>
           <tbody>
-            <tr>
+            <tr class='leftp1'>
               <td>Ones</td>
               <td class='ones player1 unplayed'></td>
             </tr>
-            <tr>
+            <tr class='leftp1'>
               <td>Twos</td>
               <td class='twos player1 unplayed'></td>
             </tr>
-            <tr>
+            <tr class='leftp1'>
               <td>Threes</td>
               <td class='threes player1 unplayed'></td>
             </tr>
-            <tr>
+            <tr class='leftp1'>
               <td>Fours</td>
               <td class='fours player1 unplayed'></td>
             </tr>
-            <tr>
+            <tr class='leftp1'>
               <td>Fives</td>
               <td class='fives player1 unplayed'></td>
             </tr>
-            <tr>
+            <tr class='leftp1'>
               <td>Sixes</td>
               <td class='sixes player1 unplayed'></td>
-            </tr>
-            <tr>
-              <td>Total Section Score</td>
-              <td id='upperscorep1' class='player1'></td>
-            </tr>
-            <tr>
-              <td>Bonus</td>
-              <td id='bonusp1' class='player1'></td>
             </tr>
         </table>
 
@@ -94,14 +105,6 @@
             <tr>
               <td>Sixes</td>
               <td class='sixes player2 unplayed'></td>
-            </tr>
-            <tr>
-              <td>Total Section Score</td>
-              <td id='upperscorep2' class='player2'></td>
-            </tr>
-            <tr>
-              <td>Bonus</td>
-              <td id='bonusp2' class='player1'></td>
             </tr>
         </table>
       </div>
@@ -137,18 +140,6 @@
               <td>Chance</td>
               <td class='chance player1 unplayed'></td>
             </tr>
-            <tr>
-              <td>Yahtzee Bonus</td>
-              <td class='yahtzeebonus player1'></td>
-            </tr>
-            <tr>
-              <td>Total Section Score</td>
-              <td id='lowerscorep1' class='player1'></td>
-            </tr>
-            <tr>
-              <td>Total Score</td>
-              <td id='totalp1' class='player1'></td>
-            </tr>
           </tbody>
         </table>
 
@@ -182,26 +173,17 @@
               <td>Chance</td>
               <td class='chance player2 unplayed'></td>
             </tr>
-            <tr>
-              <td>Yahtzee Bonus</td>
-              <td class='yahtzeebonus player2'></td>
-            </tr>
-            <tr>
-              <td>Total Section Score</td>
-              <td id='lowerscorep2' class='player2'></td>
-            </tr>
-            <tr>
-              <td>Total Score</td>
-              <td id='totalp2' class='player2'></td>
-            </tr>
           </tbody>
         </table>
       </div>
 
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <main class='gameover'>
+    </main>
+
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type='text/javascript' src='js/script.js'></script>
   </body>
