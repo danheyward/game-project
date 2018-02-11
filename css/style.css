@@ -133,4 +133,21 @@ td {
   display: none;
   background-color: #33658A;
   height: 50vh;
+  vertical-align: middle;
+}
+
+.scores {
+  /* margin: 200px 0px 0px 0px */
+  line-height: 25px;
+  padding-top: 50px;
+}
+
+.winner {
+  color: #F26419;
+  font-size: 30px;
+  padding: 10px;
+}
+
+.loser {
+  color: #FFFFFF;
 }

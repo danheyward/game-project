@@ -1,8 +1,6 @@
 // Player Variables
 var player1 = true,
     player2 = false,
-    player1LeftScore = 0,
-    player2LeftScore = 0,
     player1TotalScore = 0,
     player2TotalScore = 0;
     turnCount = 12;
@@ -236,12 +234,31 @@ var switch2p1 = function() {
   allDice = diceInHand.concat(diceInPlay);
 };
 
+var pickWinner = function() {
+  if (player1TotalScore > player2TotalScore) {
+    $('.gameover').html("<h1 class='scores'>Winner!!</h1><br /><p class='winner'>Player 1 scored an amazing " + player1TotalScore +
+    " points!</p><p class='loser'>Player 2 only managed a pathetic " + player2TotalScore + " points LOL</p><div class='ingame'><a id='playagain' class='waves-effect waves-light btn btn-large'>PLAY AGAIN</a></div>");
+  } else if (player1TotalScore < player2TotalScore) {
+    $('.gameover').html("<h1 class='scores'>Winner!!</h1><br /><p class='winner'>Player 2 scored an amazing  " + player2TotalScore +
+    " points!</p><p class='loser'>Player 1 only managed a pathetic " + player1TotalScore + " points LOL</p><div class='ingame'><a id='playagain' class='waves-effect waves-light btn btn-large'>PLAY AGAIN</a></div>")
+  } else if (player1TotalScore === player2TotalScore) {
+    $('.gameover').html("<h1 class='scores'>It's a Tie!</h1><br /><p class='winner'>You both scored  " + player2TotalScore +
+    " points! That's kinda weird, right?</p><div class='ingame'><a id='playagain' class='waves-effect waves-light btn btn-large'>PLAY AGAIN</a></div>");
+  }
+};
+
+
 // Game Ending function
 var gameOver = function() {
   $('.gameboard').hide();
-  $('.gameover').show();
   $('.startpage').hide();
+  $('header').hide();
   $('#rollbuttondiv').hide();
+  pickWinner();
+  $('.gameover').show();
+  $('#playagain').on('click', function() {
+    window.location.reload(true);
+  });
 }
 
 // Turn End Events
