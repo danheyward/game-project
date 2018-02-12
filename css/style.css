@@ -151,3 +151,12 @@ td {
 .loser {
   color: #FFFFFF;
 }
+
+footer {
+  color: #FFFFFF;
+  font-size: 10px;
+}
+
+footer a {
+  font-size: 10px;
+}
