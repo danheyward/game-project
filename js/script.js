@@ -225,7 +225,7 @@ var switch2p1 = function() {
   $('body').css('background-color', '#86BBD8');
   $('#player2title').hide();
   $('#player1title').show();
-  $('#buttondiv').html('ROLLS LEFT: 3');
+  $('#rollbutton').html('ROLLS LEFT: 3');
   player1Turn = $('.player1.unplayed');
   player2Turn = $('.player2.unplayed');
   rollNum = 0;
