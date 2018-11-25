@@ -16,7 +16,9 @@ var dice = $('.dice'),
     diceSum = 0,
     diceButton = $('#rollbutton'),
     player1Turn = $('.player1.unplayed'),
-    player2Turn = $('.player2.unplayed');
+    player2Turn = $('.player2.unplayed'),
+    player1Bonus = $('.player1.bonus'),
+    player2Bonus = $('.player2.bonus');
 // Global Constants + Colors
 var fullHand = 5;
 
@@ -61,6 +63,18 @@ var leftScores = function(array, dieNum) {
     }
   }
   return count * dieNum;
+};
+
+var leftBonus = function(array) {
+  var sum = array.reduce(function(accumulator, value) {
+    return accumulator + value;
+  }, 0);
+  console.log('this is the leftBonus: ', sum)
+  if (sum >= 63) {
+    return 35;
+  } else {
+    return 0
+  }
 };
 
 // Score Three of a Kind
@@ -266,10 +280,19 @@ player1Turn.on('click', function() {
   if (this.className === 'savedp1') {
   } else if (rollNum > 0) {
     var addScore = $(this).html()
+    if ($('#player1score').attr('data-value')) {
+      var oldScore = $('#player1score').attr('data-value')
+    } else {
+      var oldScore = 0
+    };
+    var newScore = parseInt(oldScore, 10) + parseInt(addScore, 10);
     player1TotalScore += parseInt(addScore, 10);
     this.className = 'savedp1';
     $('.unplayed').html('');
     $('#rollbutton').addClass('disabled');
+    $('#player1score').html('Score: ' + newScore);
+    $('#player1score')[0].setAttribute('data-value', newScore);
+    console.log(oldScore, addScore, newScore, 'this is on the player 1 turn')
     setTimeout(switch2p2, 2000);
   }
 });
@@ -278,10 +301,18 @@ player2Turn.on('click', function() {
   if (this.className === 'savedp2') {
   } else if (rollNum > 0 && turnCount < 12) {
     var addScore = $(this).html();
+    if ($('#player2score').attr('data-value')) {
+      var oldScore = $('#player2score').attr('data-value')
+    } else {
+      var oldScore = 0;
+    };
+    var newScore = parseInt(oldScore, 10) + parseInt(addScore, 10);
     player2TotalScore += parseInt(addScore, 10);
     this.className = 'savedp2';
     $('.unplayed').html('');
     $('#rollbutton').addClass('disabled');
+    $('#player2score').html('Score: ' + newScore);
+    $('#player2score')[0].setAttribute('data-value', newScore);
     turnCount++;
     setTimeout(switch2p1, 2000);
   } else if (turnCount === 12) {

@@ -43,6 +43,10 @@ a {
   display: none;
 }
 
+#player1score, #player2score{
+  font-size: 20px;
+}
+
 .btn {
   margin-bottom: 10px;
 }
