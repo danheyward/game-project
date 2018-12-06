@@ -43,7 +43,12 @@ a {
   display: none;
 }
 
-#player1score, #player2score{
+.scorearea > p {
+  display: inline-block;
+  margin: 0px 20px;
+}
+
+.player1score, .player2score{
   font-size: 20px;
 }
 
@@ -88,6 +93,11 @@ h1 {
   width: 100px;
   height: 100px;
   margin: 10px 0;
+}
+
+.dice {
+  background-color: lightgray;
+  border-radius: 15px;
 }
 
 .rolled, .selected {

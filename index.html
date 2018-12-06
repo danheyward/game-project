@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
-    <link rel='stylesheet type='text/css' href='css/style.css'>
+    <link rel='stylesheet' type='text/css' href='css/style.css'>
   </head>
   <body>
 
@@ -28,11 +28,13 @@
       <div>
         <div id='player1title' class='scorearea'>
           <h3>PLAYER 1</h3>
-          <p id='player1score'>Score: 0</p>
+          <p class='player1score'>Score: 0</p>
+          <p class='player2score'>Score: 0</p>
         </div>
         <div id='player2title' class='scorearea'>
           <h3>PLAYER 2</h3>
-          <p id='player2score'>Score: 0</p>
+          <p class='player1score'>Score: 0</p>
+          <p class='player2score'>Score: 0</p>
         </div>
       </div>
 
@@ -79,6 +81,10 @@
             <tr class='leftp1'>
               <td>Sixes</td>
               <td class='sixes bonus player1 unplayed'></td>
+            </tr>
+            <tr id='leftbonus'>
+              <td>Bonus</td>
+              <td class='bonustotal player1'></td>
             </tr>
         </table>
 

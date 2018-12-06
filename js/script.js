@@ -172,6 +172,8 @@ var potentialScore = function() {
     $('.fours').html(leftScores(allDice, 4));
     $('.fives').html(leftScores(allDice, 5));
     $('.sixes').html(leftScores(allDice, 6));
+    $('.bonustotal').html('this is a test');
+    console.log(player1Bonus, 'this is the player 1 bonus');
     $('.threekind').html(threeOfAKind(allDice));
     $('.fourkind').html(fourOfAKind(allDice));
     $('.sstraight').html(sStraight(allDice));
@@ -279,19 +281,19 @@ var gameOver = function() {
 player1Turn.on('click', function() {
   if (this.className === 'savedp1') {
   } else if (rollNum > 0) {
-    var addScore = $(this).html()
-    if ($('#player1score').attr('data-value')) {
-      var oldScore = $('#player1score').attr('data-value')
+    var addScore = parseInt($(this).html(), 10)
+    if ($('.player1score').attr('data-value')) {
+      var oldScore = parseInt($('.player1score').attr('data-value'), 10);
     } else {
       var oldScore = 0
     };
-    var newScore = parseInt(oldScore, 10) + parseInt(addScore, 10);
+    var newScore = oldScore + addScore;
     player1TotalScore += parseInt(addScore, 10);
     this.className = 'savedp1';
     $('.unplayed').html('');
     $('#rollbutton').addClass('disabled');
-    $('#player1score').html('Score: ' + newScore);
-    $('#player1score')[0].setAttribute('data-value', newScore);
+    $('.player1score').html('P1 Score: ' + newScore);
+    $('.player1score')[0].setAttribute('data-value', newScore);
     console.log(oldScore, addScore, newScore, 'this is on the player 1 turn')
     setTimeout(switch2p2, 2000);
   }
@@ -300,19 +302,19 @@ player1Turn.on('click', function() {
 player2Turn.on('click', function() {
   if (this.className === 'savedp2') {
   } else if (rollNum > 0 && turnCount < 12) {
-    var addScore = $(this).html();
-    if ($('#player2score').attr('data-value')) {
-      var oldScore = $('#player2score').attr('data-value')
+    var addScore = parseInt($(this).html(), 10);
+    if ($('.player2score').attr('data-value')) {
+      var oldScore = parseInt($('.player2score').attr('data-value'), 10);
     } else {
       var oldScore = 0;
     };
-    var newScore = parseInt(oldScore, 10) + parseInt(addScore, 10);
+    var newScore = oldScore + addScore;
     player2TotalScore += parseInt(addScore, 10);
     this.className = 'savedp2';
     $('.unplayed').html('');
     $('#rollbutton').addClass('disabled');
-    $('#player2score').html('Score: ' + newScore);
-    $('#player2score')[0].setAttribute('data-value', newScore);
+    $('.player2score').html('P2 Score: ' + newScore);
+    $('.player2score')[0].setAttribute('data-value', newScore);
     turnCount++;
     setTimeout(switch2p1, 2000);
   } else if (turnCount === 12) {
