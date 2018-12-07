@@ -17,8 +17,10 @@ var dice = $('.dice'),
     diceButton = $('#rollbutton'),
     player1Turn = $('.player1.unplayed'),
     player2Turn = $('.player2.unplayed'),
-    player1Bonus = $('.player1.bonus'),
-    player2Bonus = $('.player2.bonus');
+    bonus = 35,
+    nil = 0,
+    player1Bonus = [],
+    player2Bonus = [];
 // Global Constants + Colors
 var fullHand = 5;
 
@@ -42,15 +44,6 @@ var showRoll = function() {
     unselected[i].classList.add('rolled');
     unselected[i].setAttribute('data-value', diceInPlay[i]);
     unselected[i].style.backgroundImage = "url('css/img/" + diceInPlay[i] + diceInPlay[i] + ".png')";
-  }
-};
-
-// Adds up all values of the array
-var sumArray = function() {
-  allDice = diceInHand.concat(diceInPlay);
-  sum = 0;
-  for (var i = 0; i < allDice.length; i++) {
-    sum += numbers[i]
   }
 };
 
@@ -172,8 +165,8 @@ var potentialScore = function() {
     $('.fours').html(leftScores(allDice, 4));
     $('.fives').html(leftScores(allDice, 5));
     $('.sixes').html(leftScores(allDice, 6));
-    $('.bonustotal').html('this is a test');
-    console.log(player1Bonus, 'this is the player 1 bonus');
+    $('#bonustotalplayer1').html(leftBonus(player1Bonus));
+    // $('#bonustotalplayer1').html();
     $('.threekind').html(threeOfAKind(allDice));
     $('.fourkind').html(fourOfAKind(allDice));
     $('.sstraight').html(sStraight(allDice));
@@ -288,13 +281,21 @@ player1Turn.on('click', function() {
       var oldScore = 0
     };
     var newScore = oldScore + addScore;
+    if (this.className.includes('bonus') === true) {
+      player1Bonus.push(addScore);
+    };
+    if (leftBonus(player1Bonus) == 35) {
+      $('#bonustotalplayer1').html('35');
+      $('#bonustotalplayer1').addClass('savedp1')
+    } else {
+      $('#bonustotalplayer1').html('0');
+    }
     player1TotalScore += parseInt(addScore, 10);
     this.className = 'savedp1';
     $('.unplayed').html('');
     $('#rollbutton').addClass('disabled');
     $('.player1score').html('P1 Score: ' + newScore);
     $('.player1score')[0].setAttribute('data-value', newScore);
-    console.log(oldScore, addScore, newScore, 'this is on the player 1 turn')
     setTimeout(switch2p2, 2000);
   }
 });
