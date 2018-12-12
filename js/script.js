@@ -121,7 +121,7 @@ var fullHouse = function(array) {
 // Score Small Straight
 var sStraight = function(array) {
   if ((array.indexOf(1) !== -1) && (array.indexOf(2) !== -1) &&
-      (array.indexOf(3) !== -1) && (array.indexOf(3) !== -1)) {
+      (array.indexOf(3) !== -1) && (array.indexOf(4) !== -1)) {
     return 30
   } else if ((array.indexOf(2) !== -1) && (array.indexOf(3) !== -1) &&
       (array.indexOf(4) !== -1) && (array.indexOf(5) !== -1)) {
